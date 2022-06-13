@@ -4,7 +4,6 @@ const User = require('../../models/User')
 const router = Router();
 
 router.get('/', async (req, res) => {
-  console.log('GET')
   try {
     const user = await User.find()
     if (!user) throw new Error('No user')
