@@ -3,13 +3,14 @@ function log(items) {
     list = document.getElementById("result");
     [...items].forEach(item => {
         console.log(item)
-        div = document.createElement("div");
-        let name = document.createTextNode(item.name + '\n')
-        let email = document.createTextNode(item.email)
-        div.appendChild(name)
-        div.appendChild(email)
+        // div = document.createElement("div");
+        // let name = document.createTextNode(item.name + '\n')
+        // let email = document.createTextNode(item.email)
+        // div.appendChild(name)
+        // div.appendChild(email)
         let li = document.createElement("li");
-        li.appendChild(div)
+        li.innerHTML = item.name;
+        // li.appendChild(div)
         list.appendChild(li);
     });
 }
@@ -19,9 +20,6 @@ async function search() {
     if (query) {
         try {
             let items = []
-            // await $.get("/api/user", function (data, stat) {
-            //     items = data;
-            // })
             await $.post("/api/user/search", { query: query }, function (data, stat) {
                 items = data;
             })

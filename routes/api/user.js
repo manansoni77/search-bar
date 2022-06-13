@@ -32,9 +32,12 @@ router.post('/search/', async (req, res) => {
   console.log(query)
   const regexp = new RegExp(req.body.query, 'i')
   try {
-    const user = await User.find({ 'name': regexp })
-    console.log(user)
-    res.status(200).json(user)
+    const users = await User.find({ 'name': regexp })
+    console.log(users)
+    users.forEach(user => {
+      user.name = user.name.replace(regexp, function (str) { return '<mark>' + str + '</mark>' });
+    })
+    res.status(200).json(users)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
