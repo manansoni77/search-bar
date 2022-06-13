@@ -7,7 +7,6 @@ router.get('/', async (req, res) => {
   console.log('GET')
   try {
     const user = await User.find()
-    console.log(user)
     if (!user) throw new Error('No user')
     res.status(200).json(user)
   } catch (error) {
@@ -16,7 +15,6 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  console.log(req.body)
   const new_user = new User(req.body)
   try {
     const user = await new_user.save()
