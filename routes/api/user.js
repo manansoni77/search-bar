@@ -29,13 +29,12 @@ router.post('/', async (req, res) => {
 
 router.post('/search/', async (req, res) => {
   query = req.body.query
-  console.log(query)
-  const regexp = new RegExp(req.body.query, 'i')
+  const regexp1 = new RegExp(req.body.query, 'i')
+  const regexp2 = new RegExp(req.body.query, 'gi')
   try {
-    const users = await User.find({ 'name': regexp })
-    console.log(users)
+    const users = await User.find({ 'name': regexp1 })
     users.forEach(user => {
-      user.name = user.name.replace(regexp, function (str) { return '<mark>' + str + '</mark>' });
+      user.name = user.name.replace(regexp2, function (str) { return '<mark>' + str + '</mark>' });
     })
     res.status(200).json(users)
   } catch (error) {
