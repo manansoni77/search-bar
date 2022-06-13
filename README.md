@@ -1,6 +1,6 @@
 # search-bar
 
-This application searches a databse for items matching the query and return  a list of matching results<br>
+This application searches a database for items matching the query and returns a list of matching results<br>
 <br>
 To run this application, create a .env file with a mongouri and PORT<br>
 Run npm install to install all the dependencies<br>
